@@ -16,8 +16,8 @@ end
 
 array = [5, 3, 7, 9, 2]
 
-puts '=== my_each ==='
+puts "\n> my_each"
 array.my_each { |val| puts val }
 
-puts '=== my_each_with_index ==='
+puts "\n> my_each_with_index"
 array.my_each_with_index { |val, index| puts "#{index} => #{val}" }
