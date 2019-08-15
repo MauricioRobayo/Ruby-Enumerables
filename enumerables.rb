@@ -33,9 +33,15 @@ module Enumerable
     my_each { |val| return false if yield val }
     true
   end
+
+  def my_count
+    count = 0
+    my_each { |val| count += 1 if yield val }
+    count
+  end
 end
 
-array = [5, 3, 7, 9, 2]
+array = [5, 3, 7, 9, 5]
 
 puts "\n> my_each"
 array.my_each { |val| puts val }
@@ -54,3 +60,7 @@ puts(array.my_any? { |val| val > 8 })
 
 puts "\n> my_none?"
 puts(array.my_none?(&:even?))
+
+puts "\n> my_count"
+puts(array.my_count { |val| val == 5 })
+puts array.my_count
