@@ -46,7 +46,7 @@ module Enumerable
 
   def my_map
     arr = []
-    my_each_with_index { |val, index| arr[index] = yield val }
+    my_each { |val| arr << yield(val) }
     arr
   end
 
