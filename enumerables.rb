@@ -25,7 +25,7 @@ module Enumerable
   end
 
   def my_any?
-    my_each { |val| return true if yield(val) }
+    my_each { |val| return true if yield val }
     false
   end
 
