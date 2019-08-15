@@ -18,6 +18,11 @@ module Enumerable
     my_each { |val| arr << val if yield val }
     arr
   end
+
+  def my_all?
+    my_each { |val| return false unless yield val }
+    true
+  end
 end
 
 array = [5, 3, 7, 9, 2]
@@ -30,3 +35,6 @@ array.my_each_with_index { |val, index| puts "#{index} => #{val}" }
 
 puts "\n> my_select"
 puts(array.my_select { |val| val > 3 })
+
+puts "\n> my_all?"
+puts(array.my_all? { |val| val > 1 })
