@@ -39,7 +39,7 @@ module Enumerable
     if block_given?
       my_each { |val| count += 1 if yield val }
     else
-      my_each { |val| count += 1 }
+      my_each { count += 1 }
     end
     count
   end
