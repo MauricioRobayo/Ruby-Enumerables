@@ -44,14 +44,18 @@ module Enumerable
     count
   end
 
-  def my_map(proc = false)
+  def my_map(proc = nil)
     arr = []
     my_each { |val| arr << (proc ? proc[val] : yield(val)) }
     arr
   end
 
-  def my_inject
-    acc, *rest = self
+  def my_inject(acc = nil)
+    if acc
+      rest = self
+    else
+      acc, *rest = self
+    end
     rest.my_each { |val| acc = yield acc, val }
     acc
   end
@@ -93,4 +97,5 @@ puts "\n> my_inject"
 puts "array => #{array}"
 puts "result => #{array.my_inject(&:+)}"
 puts "result => #{array.my_inject(&:*)}"
-puts "result => #{array.my_inject { |acc, val| acc.to_s + val.to_s }}"
+puts "result => #{array.my_inject { |acc, val| "#{acc} #{val}" }}"
+puts "result => #{array.my_inject('hi') { |acc, val| "#{acc} #{val}" }}"
