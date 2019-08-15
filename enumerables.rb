@@ -44,9 +44,9 @@ module Enumerable
     count
   end
 
-  def my_map
+  def my_map(proc)
     arr = []
-    my_each { |val| arr << yield(val) }
+    my_each { |val| arr << proc[val] }
     arr
   end
 
@@ -85,7 +85,9 @@ puts array.my_count
 
 puts "\n> my_map"
 puts "array => #{array}"
-puts "result => #{array.my_map { |val| val * 2 }}"
+# puts "result => #{array.my_map { |val| val * 2 }}"
+double = Proc.new { |val| val * 2 }
+puts "result => #{array.my_map(double)}"
 
 puts "\n> my_inject"
 puts "array => #{array}"
