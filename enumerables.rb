@@ -45,8 +45,9 @@ module Enumerable
   end
 
   def my_map
-    my_each_with_index { |val, index| self[index] = yield val }
-    self
+    arr = []
+    my_each_with_index { |val, index| arr[index] = yield val }
+    arr
   end
 end
 
