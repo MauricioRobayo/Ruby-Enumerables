@@ -36,8 +36,17 @@ module Enumerable
 
   def my_count
     count = 0
-    my_each { |val| count += 1 if yield val }
+    if block_given?
+      my_each { |val| count += 1 if yield val }
+    else
+      my_each { |val| count += 1 }
+    end
     count
+  end
+
+  def my_map
+    my_each_with_index { |val, index| self[index] = yield val }
+    self
   end
 end
 
@@ -63,4 +72,10 @@ puts(array.my_none?(&:even?))
 
 puts "\n> my_count"
 puts(array.my_count { |val| val == 5 })
+puts array.my_count(&:odd?)
+puts array.my_count(&:even?)
 puts array.my_count
+
+puts "\n> my_map"
+puts "array => #{array}"
+puts "result => #{array.my_map { |val| val * 2 }}"
