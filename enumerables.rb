@@ -49,6 +49,12 @@ module Enumerable
     my_each_with_index { |val, index| arr[index] = yield val }
     arr
   end
+
+  def my_inject
+    acc, *rest = self
+    rest.my_each { |val| acc = yield acc, val }
+    acc
+  end
 end
 
 array = [5, 3, 7, 9, 5]
@@ -80,3 +86,9 @@ puts array.my_count
 puts "\n> my_map"
 puts "array => #{array}"
 puts "result => #{array.my_map { |val| val * 2 }}"
+
+puts "\n> my_inject"
+puts "array => #{array}"
+puts "result => #{array.my_inject(&:+)}"
+puts "result => #{array.my_inject(&:*)}"
+puts "result => #{array.my_inject { |acc, val| acc.to_s + val.to_s }}"
