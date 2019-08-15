@@ -28,6 +28,11 @@ module Enumerable
     my_each { |val| return true if yield(val) }
     false
   end
+
+  def my_none?
+    my_each { |val| return false if yield val }
+    true
+  end
 end
 
 array = [5, 3, 7, 9, 2]
@@ -46,3 +51,6 @@ puts(array.my_all? { |val| val > 1 })
 
 puts "\n> my_any?"
 puts(array.my_any? { |val| val > 8 })
+
+puts "\n> my_none?"
+puts(array.my_none?(&:even?))
