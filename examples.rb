@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'enumerables.rb'
+require_relative 'my_enumerables.rb'
 
 array = [5, 3, 7, 9, 5]
 
