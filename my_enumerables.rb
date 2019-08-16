@@ -2,8 +2,8 @@
 
 module Enumerable
   def my_each
-    (0...size).each do |i|
-      yield self[i]
+    for val in self
+      yield val
     end
   end
 
