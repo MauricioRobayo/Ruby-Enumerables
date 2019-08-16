@@ -8,7 +8,7 @@ module Enumerable
   end
 
   def my_each_with_index
-    (0...size).each do |i|
+    (0...size).my_each do |i|
       yield self[i], i
     end
   end
