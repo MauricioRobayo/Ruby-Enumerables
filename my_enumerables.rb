@@ -14,9 +14,7 @@ module Enumerable
   end
 
   def my_select
-    arr = []
-    my_each { |val| arr << val if yield val }
-    arr
+    [].tap { |arr| my_each { |val| arr << val if yield val } }
   end
 
   def my_all?
@@ -45,9 +43,7 @@ module Enumerable
   end
 
   def my_map(proc = nil)
-    arr = []
-    my_each { |val| arr << (proc ? proc[val] : yield(val)) }
-    arr
+    [].tap { |arr| my_each { |val| arr << (proc ? proc[val] : yield(val)) } }
   end
 
   def my_inject(acc = nil)
