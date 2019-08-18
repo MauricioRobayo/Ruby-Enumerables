@@ -25,7 +25,7 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/For:
-  Enabled: false
+  EnforcedStyle: for
 
 Layout/AlignHash:
   EnforcedColonStyle: key
